@@ -1,0 +1,49 @@
+{%extends 'base.html'%} 
+
+{%block mainblock%}
+
+<div class="container">
+  <div class="mt-1 mb-2">
+    <a href="{%url 'job-list'%}" class="btn btn-dark me-1">All Jobs</a>
+    <a href="{%url 'job-list'%}?status=True" class="btn btn-dark me-1">Active Jobs</a>
+    <a href="{%url 'job-list'%}?status=False" class="btn btn-dark">Inactive Jobs</a>
+  </div>
+    {%for job in jobs%}
+    <div class="card mb-3" class="w-75">
+        <div class="row g-0">
+          <div class="col-md-4">
+            {%if job.poster%}
+            <img src="{{job.poster.url}}" class="img-fluid rounded-start" width="100%" style="height: 500px;" alt="...">
+
+            {%endif%}
+          </div>
+          <div class="col-md-5">
+            <div class="card-body">
+              <h5 class="card-title">{{job.title}}</h5>
+              <p class="card-text">Description : {{job.description}}</p>
+              <p class="card-text">Salary : {{job.salary}}</p>
+              <p class="card-text">Experience : {{job.experience}}</p>
+              <p class="card-text">Last Date : {{job.last_date}}</p>
+              <p class="card-text">Vaccancies : {{job.vaccancies}}</p>
+              <p class="card-text">Contact : {{job.contact}}</p>
+              <p class="card-text">Qualification : {{job.qualification}}</p>
+              <p class="card-text">Category : {{job.category}}</p>
+              <p class="card-text">Company : {{job.company}}</p>
+              
+
+              <p class="card-text"><small class="text-body-secondary">Last updated 3 mins ago</small></p>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="card-body mt-5">
+                <a href="{%url 'job-change' job.id%}" class="btn btn-outline-warning rounded shadow-sm">edit</a>
+                <a href="{%url 'job-remove' job.id%}" class="btn btn-outline-danger rounded shadow-sm ms-3">delete</a>
+                <a href="" class="btn btn-outline-primary rounded shadow-sm mt-3">ViewApplications</a>
+            </div>
+          </div>
+        </div>
+    </div>
+    {%endfor%}
+</div>
+
+{%endblock%}

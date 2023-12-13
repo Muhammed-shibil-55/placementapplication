@@ -4,7 +4,17 @@
 
 <div class="d-flex justify-content-evenly">
     <a href="{%url 'category'%}" class="btn btn-dark w-25">Category</a>
-    <a href="{%url 'job'%}" class="btn btn-dark w-25">Jobs</a>
+    <div class="dropdown w-25">
+        <a class="btn btn-dark dropdown-toggle w-100" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+          Jobs
+        </a>
+          
+        <ul class="dropdown-menu bg-dark border-0 shadow">
+            <li><a href="{%url 'job-add'%}" class="text-light text-decoration-none p-2 fs-6 btn btn-dark text-start mb-2">Add Job</a></li>
+            <li><a href="{%url 'job-list'%}" class="text-light text-decoration-none p-2 fs-6 btn btn-dark text-start">Job List</a></li>
+              
+        </ul>
+    </div>
     <a href="#" class="btn btn-dark w-25">Applications</a>
 </div>
 {%endblock%}

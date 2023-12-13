@@ -38,7 +38,11 @@ class StudentProfile(models.Model):
     address=models.CharField(max_length=200)
     phone=models.CharField(max_length=200)
     profile_pic=models.ImageField(upload_to="profilepics",null=True,blank=True)
-    user=models.OneToOneField(User,on_delete=models.CASCADE)
+    user=models.OneToOneField(User,on_delete=models.CASCADE,related_name="profile")
+
+
+    def __str__(self):
+        return self.user.username
 
 class Applications(models.Model):
     job=models.ForeignKey(Jobs,on_delete=models.DO_NOTHING)

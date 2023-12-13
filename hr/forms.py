@@ -14,4 +14,19 @@ class CategoryForm(forms.ModelForm):
 class JobForm(forms.ModelForm):
     class Meta:
         model=Jobs
+        exclude=("status",)
+        # fields="__all__"
+        widgets={
+            "category":forms.Select(attrs={"class":"form-select"}),
+            "last_date":forms.DateInput(attrs={"class":"form-control","type":"date"})
+        }
+
+class JobChangeForm(forms.ModelForm):
+    class Meta:
+        model=Jobs
         fields="__all__"
+        widgets={
+            "category":forms.Select(attrs={"class":"form-select"}),
+            "last_date":forms.DateInput(attrs={"class":"form-control","type":"date"}),
+            
+        }

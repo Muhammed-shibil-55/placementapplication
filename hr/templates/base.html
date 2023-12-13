@@ -29,12 +29,24 @@
                     <div class="nav flex-column">
                         <p class="fw-bold fs-4 text-center text-light">Admin / User</p>
                         <hr class="text-light">
-                        <a href="#"
+                        <a href="{%url 'index'%}"
                             class="text-light text-decoration-none mt-4 p-2 fs-6 btn btn-dark text-start">Home</a>
                         <a href="{%url 'category'%}"
                             class="text-light text-decoration-none p-2 fs-6 btn btn-dark text-start">Category</a>
-                        <a href="{%url 'job'%}"
-                            class="text-light text-decoration-none p-2 fs-6 btn btn-dark text-start">Jobs</a>
+                        
+
+                        <div class="dropdown">
+                            <a class="btn btn-dark dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                              Jobs
+                            </a>
+                              
+                            <ul class="dropdown-menu bg-dark border-0 shadow">
+                                <li><a href="{%url 'job-add'%}" class="text-light text-decoration-none p-2 fs-6 btn btn-dark text-start mb-2">Add Job</a></li>
+                                <li><a href="{%url 'job-list'%}" class="text-light text-decoration-none p-2 fs-6 btn btn-dark text-start">Job List</a></li>
+                                  
+                            </ul>
+                        </div>
+                            
                         <a href="#"
                             class="text-light text-decoration-none p-2 fs-6 btn btn-dark text-start">Applications</a>
                         <a href="{%url 'signout'%}"
@@ -45,9 +57,7 @@
             <div class="col mx-2 " id="main">
                 <div class="mt-5"></div>
                 <h3 class="fw-bold">Hello {{request.user}},</h3>
-                <br><br>
                 
-                    <br><br>
                
                 {%block mainblock%}
 
