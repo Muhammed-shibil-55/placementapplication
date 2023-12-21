@@ -21,9 +21,16 @@ class Jobs(models.Model):
     category=models.ForeignKey(Category,on_delete=models.DO_NOTHING)
     status=models.BooleanField(default=True)
     company=models.CharField(max_length=200,null=True)
+    created_date=models.DateTimeField(auto_now_add=True,null=True)
+    options=(("part-time","part-time"),("full-time","full-time"))
+    job_type=models.CharField(max_length=200,choices=options,default="full-time")
 
     def __str__(self) -> str:
         return self.title
+    
+    def application_count(self):
+        qs=Applications.objects.filter(job=self).count()
+        return qs
     
 class StudentProfile(models.Model):
     qualification=models.CharField(max_length=200)
@@ -39,6 +46,7 @@ class StudentProfile(models.Model):
     phone=models.CharField(max_length=200)
     profile_pic=models.ImageField(upload_to="profilepics",null=True,blank=True)
     user=models.OneToOneField(User,on_delete=models.CASCADE,related_name="profile")
+    saved_jobs=models.ManyToManyField(Jobs,null=True,related_name="saved")
 
 
     def __str__(self):

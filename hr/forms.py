@@ -18,7 +18,8 @@ class JobForm(forms.ModelForm):
         # fields="__all__"
         widgets={
             "category":forms.Select(attrs={"class":"form-select"}),
-            "last_date":forms.DateInput(attrs={"class":"form-control","type":"date"})
+            "last_date":forms.DateInput(attrs={"class":"form-control","type":"date"}),
+            "job_type":forms.Select(attrs={"class":"form-select"}),
         }
 
 class JobChangeForm(forms.ModelForm):

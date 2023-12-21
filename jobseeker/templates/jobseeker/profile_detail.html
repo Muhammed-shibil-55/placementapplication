@@ -1,14 +1,37 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <div class="container">
-        {{data}}
-    </div>
-</body>
-</html>
+{%extends 'jobseeker/base.html'%}
+
+{%block bodyblock%}
+
+<div class="container mb-5 d-flex justify-content-center">
+    <div class="card mt-5" style="width: 50%;">
+        {%if data.profile_pic%}
+        <img src="{{data.profile_pic.url}}" class="card-img-top object-fit-fill" alt="..." style="height: 500px;">
+        {%endif%}
+        <div class="card-body">
+          <h5 class="card-title">{{data.user}}</h5>
+          <p class="card-text">
+            {{data.user.first_name}}
+        </p>
+          <p class="card-text">
+            <div>Address : {{data.address}}</div>
+            <div>phone : {{data.phone}}</div>
+            <div>email : {{data.user.email}}</div>
+        </p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Age : {{data.age}}</li>
+          <li class="list-group-item">Experience : {{data.experience}} years</li>
+          <li class="list-group-item">Gender : {{data.gender}}</li>
+          <li class="list-group-item">Qualificatiom : {{data.qualification}}</li>
+          <li class="list-group-item">Skills : {{data.skills}}</li>
+        </ul>
+        <div class="card-body">
+          {%if data.resume%}
+          <a href="{{data.resume.url}}" download class="card-link btn btn-outline-info">Download Resume</a>
+          {%endif%}
+          
+        </div>
+      </div>
+</div>
+
+{%endblock%}
