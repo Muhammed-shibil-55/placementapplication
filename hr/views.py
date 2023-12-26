@@ -4,7 +4,7 @@ from django.shortcuts import render,redirect
 from django.views.generic import View,FormView,TemplateView,CreateView,ListView,UpdateView
 from django.contrib.auth import authenticate,login,logout
 from django.urls import reverse_lazy
-from myapp.models import Category,Jobs
+from myapp.models import Category,Jobs,Applications
 
 
 from hr.forms import LoginForm,CategoryForm,JobForm,JobChangeForm
@@ -97,7 +97,12 @@ class JobUpdateView(UpdateView):
     model=Jobs
     success_url=reverse_lazy("job-list")
     
-
+class JobApplicationLIstView(View):
+    def get(self,request,*args,**kwargs):
+        id=kwargs.get("pk")
+        job_object=Jobs.objects.get(id=id)
+        qs=Applications.objects.filter(job=job_object)
+        return render(request,"job-applications.html",{"data":qs})
     
 
 

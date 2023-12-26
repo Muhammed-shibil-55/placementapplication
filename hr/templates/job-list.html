@@ -38,7 +38,8 @@
             <div class="card-body mt-5">
                 <a href="{%url 'job-change' job.id%}" class="btn btn-outline-warning rounded shadow-sm">edit</a>
                 <a href="{%url 'job-remove' job.id%}" class="btn btn-outline-danger rounded shadow-sm ms-3">delete</a>
-                <a href="" class="btn btn-outline-primary rounded shadow-sm mt-3">ViewApplications</a>
+                <div class="mt-1">{{job.application_count}} applications</div>
+                <a href="{%url 'job-applications' job.id%}" class="btn btn-outline-primary rounded shadow-sm mt-2">ViewApplications</a>
             </div>
           </div>
         </div>
